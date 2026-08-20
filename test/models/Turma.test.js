@@ -42,4 +42,20 @@ describe("Turma", () => {
         });
     });
 
+    describe("obterAprovados", () => {
+        it("deve retornar apenas os alunos com média maior ou igual à média de aprovação", () => {
+            const turma = new Turma("Turma A");
+            const aprovado = new Aluno("Maria", [9, 8]);
+            const reprovado = new Aluno("João", [4, 5]);
+
+            turma.adicionarAluno(aprovado);
+            turma.adicionarAluno(reprovado);
+
+            const aprovados = turma.obterAprovados();
+
+            assert.equal(aprovados.length, 1);
+            assert.equal(aprovados[0], aprovado);
+        });
+    });
+
 });
