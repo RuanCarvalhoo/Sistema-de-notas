@@ -20,15 +20,7 @@ export default class Turma {
 
     // Retorna a lista de alunos aprovados da turma.
     obterAprovados() {
-        const aprovados = [];
-
-        for (const aluno of this.alunos) {
-            if (aluno.estaAprovado()) {
-                aprovados.push(aluno);
-            }
-        }
-
-        return aprovados;
+        return this.alunos.filter(aluno => aluno.estaAprovado());
     }
 
     // Retorna um objeto com as estatísticas da turma,
