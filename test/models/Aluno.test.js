@@ -51,5 +51,8 @@ describe('Aluno', () => {
 
     const joao = new Aluno('Joao', [3, 5]);
     expect(joao.getSituacao()).toBe('Reprovado');
+
+    const ana = new Aluno('Ana', [6, 6]);
+    expect(ana.getSituacao()).toBe('Reprovado');
   });
 });

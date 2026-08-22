@@ -10,7 +10,6 @@ export default class Aluno {
         this.notas = notas;
     }
 
-
     adicionarNota(nota) {
         this.notas.push(nota);
     }
@@ -25,16 +24,11 @@ export default class Aluno {
         return soma / this.notas.length;
     }
 
-    getSituacao() {
-        if (this.calcularMedia() === 4) {
-            return "Reprovado";
-        }
-
-        return "Aprovado";
-    }
-
     estaAprovado() {
         return this.calcularMedia() >= Aluno.MEDIA_APROVACAO;
     }
 
+    getSituacao() {
+        return this.estaAprovado() ? "Aprovado" : "Reprovado";
+    }
 }
