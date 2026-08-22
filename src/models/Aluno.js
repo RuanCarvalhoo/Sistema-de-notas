@@ -29,7 +29,4 @@ export default class Aluno {
         return this.calcularMedia() >= Aluno.MEDIA_APROVACAO;
     }
 
-    getSituacao() {
-        return this.estaAprovado() ? "Aprovado" : "Reprovado";
-    }
 }

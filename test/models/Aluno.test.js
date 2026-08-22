@@ -44,4 +44,9 @@ describe('Aluno', () => {
     const ana = new Aluno('Ana', [6, 6]);
     expect(ana.estaAprovado()).toBe(false);
   });
+
+  test('getSituacao descreve a situacao do aluno', () => {
+    const maria = new Aluno('Maria', [9, 9]);
+    expect(maria.getSituacao()).toBe('Aprovado');
+  });
 });
