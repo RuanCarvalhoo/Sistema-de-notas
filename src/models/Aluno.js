@@ -25,6 +25,10 @@ export default class Aluno {
         return soma / this.notas.length;
     }
 
+    getSituacao() {
+        return "Aprovado";
+    }
+
     estaAprovado() {
         return this.calcularMedia() >= Aluno.MEDIA_APROVACAO;
     }
