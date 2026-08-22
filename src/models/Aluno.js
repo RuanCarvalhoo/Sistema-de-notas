@@ -25,6 +25,10 @@ export default class Aluno {
         return soma / this.notas.length;
     }
 
+    estaAprovado() {
+        return true;
+    }
+
     getSituacao() {
         return this.estaAprovado() ? "Aprovado" : "Reprovado";
     }
