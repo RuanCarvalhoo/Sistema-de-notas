@@ -37,5 +37,8 @@ describe('Aluno', () => {
   test('estaAprovado indica se o aluno atingiu a media de aprovacao', () => {
     const maria = new Aluno('Maria', [8, 8]);
     expect(maria.estaAprovado()).toBe(true);
+
+    const joao = new Aluno('Joao', [4, 6]);
+    expect(joao.estaAprovado()).toBe(false);
   });
 });
