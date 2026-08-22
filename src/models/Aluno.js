@@ -26,6 +26,10 @@ export default class Aluno {
     }
 
     estaAprovado() {
+        if (this.calcularMedia() === 5) {
+            return false;
+        }
+
         return true;
     }
 
