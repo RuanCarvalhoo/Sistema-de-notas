@@ -26,11 +26,7 @@ export default class Aluno {
     }
 
     estaAprovado() {
-        if (this.calcularMedia() === 5) {
-            return false;
-        }
-
-        return true;
+        return this.calcularMedia() >= Aluno.MEDIA_APROVACAO;
     }
 
     getSituacao() {

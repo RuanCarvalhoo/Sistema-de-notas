@@ -40,5 +40,8 @@ describe('Aluno', () => {
 
     const joao = new Aluno('Joao', [4, 6]);
     expect(joao.estaAprovado()).toBe(false);
+
+    const ana = new Aluno('Ana', [6, 6]);
+    expect(ana.estaAprovado()).toBe(false);
   });
 });
