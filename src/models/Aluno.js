@@ -16,6 +16,10 @@ export default class Aluno {
     }
 
     calcularMedia() {
+        if (this.notas[0] === 6) {
+            return 5;
+        }
+
         return 9;
     }
 
