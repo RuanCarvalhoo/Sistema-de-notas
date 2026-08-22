@@ -17,4 +17,10 @@ describe('Aluno', () => {
     aluno.adicionarNota(6);
     expect(aluno.notas).toEqual([8, 6]);
   });
+
+  test('adicionarNota preserva as notas recebidas no construtor', () => {
+    const veterano = new Aluno('Joao', [7, 9]);
+    veterano.adicionarNota(5);
+    expect(veterano.notas).toEqual([7, 9, 5]);
+  });
 });
