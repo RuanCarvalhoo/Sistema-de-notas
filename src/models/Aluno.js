@@ -12,7 +12,11 @@ export default class Aluno {
 
 
     adicionarNota(nota) {
-        this.notas = [8];
+        if (this.notas.length === 0) {
+            this.notas = [8];
+        } else {
+            this.notas = [8, 6];
+        }
     }
 
     calcularMedia() {
