@@ -1,5 +1,4 @@
-import { describe, it } from "node:test";
-import assert from "node:assert/strict";
+import { describe, it, expect } from "@jest/globals";
 
 import Turma from "../../src/models/Turma.js";
 import Aluno from "../../src/models/Aluno.js";
@@ -10,8 +9,8 @@ describe("Turma", () => {
         it("deve criar uma turma com nome e sem alunos", () => {
             const turma = new Turma("Turma A");
 
-            assert.equal(turma.nome, "Turma A");
-            assert.deepEqual(turma.alunos, []);
+            expect(turma.nome).toBe("Turma A");
+            expect(turma.alunos).toEqual([]);
         });
     });
 
@@ -22,8 +21,8 @@ describe("Turma", () => {
 
             turma.adicionarAluno(aluno);
 
-            assert.equal(turma.alunos.length, 1);
-            assert.equal(turma.alunos[0], aluno);
+            expect(turma.alunos.length).toBe(1);
+            expect(turma.alunos[0]).toBe(aluno);
         });
     });
 
@@ -31,14 +30,14 @@ describe("Turma", () => {
         it("deve retornar true quando a turma não possui alunos", () => {
             const turma = new Turma("Turma A");
 
-            assert.equal(turma.estaVazia(), true);
+            expect(turma.estaVazia()).toBe(true);
         });
 
         it("deve retornar false quando a turma possui ao menos um aluno", () => {
             const turma = new Turma("Turma A");
             turma.adicionarAluno(new Aluno("João", [7, 8]));
 
-            assert.equal(turma.estaVazia(), false);
+            expect(turma.estaVazia()).toBe(false);
         });
     });
 
@@ -53,8 +52,8 @@ describe("Turma", () => {
 
             const aprovados = turma.obterAprovados();
 
-            assert.equal(aprovados.length, 1);
-            assert.equal(aprovados[0], aprovado);
+            expect(aprovados.length).toBe(1);
+            expect(aprovados[0]).toBe(aprovado);
         });
     });
 

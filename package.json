@@ -1,17 +1,9 @@
 {
-  "name": "sistema-de-notas",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "dependencies": {
-    "pdfkit": "^0.19.1",
-    "pptxgenjs": "^4.0.1"
-  }
+    "type": "module",
+    "scripts": {
+        "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+    },
+    "devDependencies": {
+        "jest": "^30.0.0"
+    }
 }
