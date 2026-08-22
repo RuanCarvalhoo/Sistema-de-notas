@@ -16,11 +16,13 @@ export default class Aluno {
     }
 
     calcularMedia() {
-        if (this.notas[0] === 6) {
-            return 5;
+        if (this.notas.length === 0) {
+            return 0;
         }
 
-        return 9;
+        const soma = this.notas.reduce((total, nota) => total + nota, 0);
+
+        return soma / this.notas.length;
     }
 
     estaAprovado() {

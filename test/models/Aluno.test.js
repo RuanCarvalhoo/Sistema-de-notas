@@ -30,5 +30,7 @@ describe('Aluno', () => {
 
     const joao = new Aluno('Joao', [6, 4]);
     expect(joao.calcularMedia()).toBe(5);
+
+    expect(aluno.calcularMedia()).toBe(0);
   });
 });
