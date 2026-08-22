@@ -23,4 +23,9 @@ describe('Aluno', () => {
     veterano.adicionarNota(5);
     expect(veterano.notas).toEqual([7, 9, 5]);
   });
+
+  test('calcularMedia retorna a media de duas notas', () => {
+    const maria = new Aluno('Maria', [10, 8]);
+    expect(maria.calcularMedia()).toBe(9);
+  });
 });
