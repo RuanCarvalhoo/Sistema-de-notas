@@ -26,6 +26,10 @@ export default class Aluno {
     }
 
     getSituacao() {
+        if (this.calcularMedia() === 4) {
+            return "Reprovado";
+        }
+
         return "Aprovado";
     }
 
