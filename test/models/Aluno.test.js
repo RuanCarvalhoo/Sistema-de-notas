@@ -27,5 +27,8 @@ describe('Aluno', () => {
   test('calcularMedia retorna a media de duas notas', () => {
     const maria = new Aluno('Maria', [10, 8]);
     expect(maria.calcularMedia()).toBe(9);
+
+    const joao = new Aluno('Joao', [6, 4]);
+    expect(joao.calcularMedia()).toBe(5);
   });
 });
