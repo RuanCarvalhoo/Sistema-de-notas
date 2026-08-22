@@ -18,6 +18,11 @@ export default class Turma {
         return this.alunos.length === 0;
     }
 
+    // Retorna a lista de alunos aprovados da turma.
+    obterAprovados() {
+        return this.alunos.filter(aluno => aluno.estaAprovado());
+    }
+
     // Retorna um objeto com as estatísticas da turma,
     // sem imprimir nada (separando cálculo de exibição).
     analisar() {
