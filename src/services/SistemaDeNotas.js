@@ -1,57 +1,77 @@
 // Camada de serviço: SistemaDeNotas
 // Orquestra as turmas. Não conhece o terminal (readline) nem console.log.
 
+
 import Turma from "../models/Turma.js";
 import Aluno from "../models/Aluno.js";
+
 
 export default class SistemaDeNotas {
   constructor(nomesTurmas = []) {
     // Map<nomeTurma, Turma> — acaba com a cadeia de if/else por turma.
     this.turmas = new Map();
 
+
     for (const nome of nomesTurmas) {
       this.turmas.set(nome, new Turma(nome));
     }
   }
 
+
   getNomesTurmas() {
     return [...this.turmas.keys()];
   }
+
 
   getTurma(nomeTurma) {
     return this.turmas.get(nomeTurma) ?? null;
   }
 
+
   cadastrarAluno(nome, notas, nomeTurma) {
     const turma = this.getTurma(nomeTurma);
+
 
     if (!turma) {
       throw new Error(`Turma inexistente: ${nomeTurma}`);
     }
 
+
     if (!nome || nome.trim() === "") {
       throw new Error("Aluno deve ter nome");
     }
 
+
     if (!notas || notas.length === 0) {
       throw new Error("Aluno deve ter pelo menos uma nota");
     }
+
+
+    const algumaNotaNaoNumerica = notas.some((nota) => typeof nota !== 'number' || isNaN(nota));
+    if (algumaNotaNaoNumerica) {
+      throw new Error("Notas devem ser números");
+    }
+
 
     const algumaNotaInvalida = notas.some((nota) => nota < 0 || nota > 10);
     if (algumaNotaInvalida) {
       throw new Error("Notas devem estar entre 0 e 10");
     }
 
+
     const alunoExiste = turma.alunos.some((aluno) => aluno.nome === nome);
     if (alunoExiste) {
       throw new Error(`Aluno já cadastrado na turma: ${nome}`);
     }
 
+
     const aluno = new Aluno(nome, notas);
     turma.adicionarAluno(aluno);
 
+
     return aluno;
   }
+
 
   // Analítica de todas as turmas que possuem alunos.
   analisarTodasAsTurmas() {
@@ -60,14 +80,17 @@ export default class SistemaDeNotas {
       .filter((analise) => analise !== null);
   }
 
+
   listarTodosOsAlunos() {
     const alunos = [];
+
 
     for (const turma of this.turmas.values()) {
       for (const aluno of turma.alunos) {
         alunos.push({ aluno, turma: turma.nome });
       }
     }
+
 
     return alunos;
   }

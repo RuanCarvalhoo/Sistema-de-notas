@@ -128,4 +128,12 @@ describe('SistemaDeNotas', () => {
     expect(turma.alunos).toContain(aluno1);
     expect(turma.alunos).toContain(aluno2);
   });
+
+    test('cadastrarAluno lança erro quando há nota não numérica', () => {
+    const sistema = new SistemaDeNotas(['1A']);
+
+    expect(() => {
+      sistema.cadastrarAluno('Pedro', [8, 'dez'], '1A');
+    }).toThrow('Notas devem ser números');
+  });
 });
