@@ -37,6 +37,11 @@ export default class SistemaDeNotas {
       throw new Error("Aluno deve ter pelo menos uma nota");
     }
 
+    const algumaNotaInvalida = notas.some((nota) => nota < 0 || nota > 10);
+    if (algumaNotaInvalida) {
+      throw new Error("Notas devem estar entre 0 e 10");
+    }
+
     const aluno = new Aluno(nome, notas);
     turma.adicionarAluno(aluno);
 

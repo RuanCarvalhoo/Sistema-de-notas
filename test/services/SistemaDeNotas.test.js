@@ -70,4 +70,13 @@ describe('SistemaDeNotas', () => {
       sistema.cadastrarAluno('', [8, 9], '1A');
     }).toThrow('Aluno deve ter nome');
   });
+
+
+  test('cadastrarAluno lança erro quando há nota fora do intervalo 0–10', () => {
+    const sistema = new SistemaDeNotas(['1A']);
+
+    expect(() => {
+      sistema.cadastrarAluno('Pedro', [8, 11], '1A');
+    }).toThrow('Notas devem estar entre 0 e 10');
+  });
 });
