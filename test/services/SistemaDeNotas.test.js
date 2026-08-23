@@ -79,4 +79,14 @@ describe('SistemaDeNotas', () => {
       sistema.cadastrarAluno('Pedro', [8, 11], '1A');
     }).toThrow('Notas devem estar entre 0 e 10');
   });
+
+    test('cadastrarAluno lança erro quando o aluno já existe na turma', () => {
+    const sistema = new SistemaDeNotas(['1A']);
+
+    sistema.cadastrarAluno('Ana', [7, 8], '1A');
+
+    expect(() => {
+      sistema.cadastrarAluno('Ana', [9, 10], '1A');
+    }).toThrow('Aluno já cadastrado na turma: Ana');
+  });
 });

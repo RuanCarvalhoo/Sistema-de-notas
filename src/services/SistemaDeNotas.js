@@ -42,6 +42,11 @@ export default class SistemaDeNotas {
       throw new Error("Notas devem estar entre 0 e 10");
     }
 
+    const alunoExiste = turma.alunos.some((aluno) => aluno.nome === nome);
+    if (alunoExiste) {
+      throw new Error(`Aluno já cadastrado na turma: ${nome}`);
+    }
+
     const aluno = new Aluno(nome, notas);
     turma.adicionarAluno(aluno);
 
