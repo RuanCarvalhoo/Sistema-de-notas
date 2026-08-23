@@ -179,4 +179,20 @@ describe('SistemaDeNotas', () => {
     expect(analises).toHaveLength(2);
     expect(analises.map(a => a.nome)).toEqual(expect.arrayContaining(['1A', '3C']));
   });
+    test('analisarTodasAsTurmas retorna análise com nome, alunoMaiorMedia, alunoMenorMedia, mediaGeral, aprovados e reprovados', () => {
+    const sistema = new SistemaDeNotas(['1A']);
+
+    sistema.cadastrarAluno('Ana', [8, 9], '1A');
+    sistema.cadastrarAluno('Bruno', [4, 5], '1A');
+
+    const [analise] = sistema.analisarTodasAsTurmas();
+
+    expect(analise.nome).toBe('1A');
+    expect(analise.alunoMaiorMedia).toBeDefined();
+    expect(analise.alunoMenorMedia).toBeDefined();
+    expect(analise.mediaGeral).toBeGreaterThanOrEqual(0);
+    expect(analise.mediaGeral).toBeLessThanOrEqual(10);
+    expect(analise.aprovados).toBe(1);
+    expect(analise.reprovados).toBe(1);
+  });
 });
