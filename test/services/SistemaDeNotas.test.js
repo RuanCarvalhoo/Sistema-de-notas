@@ -97,4 +97,12 @@ describe('SistemaDeNotas', () => {
       sistema.cadastrarAluno('Carlos', [-1, 8], '1A');
     }).toThrow('Notas devem estar entre 0 e 10');
   });
+
+    test('cadastrarAluno lança erro quando o nome tem apenas espaços', () => {
+    const sistema = new SistemaDeNotas(['1A']);
+
+    expect(() => {
+      sistema.cadastrarAluno('   ', [8, 9], '1A');
+    }).toThrow('Aluno deve ter nome');
+  });
 });
