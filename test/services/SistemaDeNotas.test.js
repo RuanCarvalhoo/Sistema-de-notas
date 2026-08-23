@@ -105,4 +105,15 @@ describe('SistemaDeNotas', () => {
       sistema.cadastrarAluno('   ', [8, 9], '1A');
     }).toThrow('Aluno deve ter nome');
   });
+
+    test('cadastrarAluno funciona em turma existente mesmo sem alunos', () => {
+    const sistema = new SistemaDeNotas(['1A', '2B']);
+
+    const aluno = sistema.cadastrarAluno('Lucas', [10, 9], '2B');
+    const turma = sistema.getTurma('2B');
+
+    expect(aluno.nome).toBe('Lucas');
+    expect(turma.alunos).toHaveLength(1);
+    expect(turma.alunos[0]).toBe(aluno);
+  });
 });
