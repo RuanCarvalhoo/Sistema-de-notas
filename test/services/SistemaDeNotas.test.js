@@ -7,4 +7,11 @@ describe('SistemaDeNotas', () => {
 
     expect(sistema.getNomesTurmas()).toEqual(['1A']);
   });
+
+
+  test('getNomesTurmas retorna todas as turmas cadastradas', () => {
+    const sistema = new SistemaDeNotas(['1A', '1B', '2A']);
+
+    expect(sistema.getNomesTurmas()).toEqual(['1A', '1B', '2A']);
+  });
 });
