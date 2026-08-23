@@ -160,4 +160,10 @@ describe('SistemaDeNotas', () => {
     expect(turma1A.alunos).toHaveLength(1);
     expect(turma2B.alunos).toHaveLength(1);
   });
+
+    test('analisarTodasAsTurmas retorna array vazio quando não há alunos', () => {
+    const sistema = new SistemaDeNotas(['1A', '2B']);
+
+    expect(sistema.analisarTodasAsTurmas()).toEqual([]);
+  });
 });
