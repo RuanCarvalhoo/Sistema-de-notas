@@ -31,4 +31,16 @@ describe('SistemaDeNotas', () => {
 
     expect(sistema.getTurma('2B')).toBeNull();
   });
+
+
+  test('cadastrarAluno adiciona o aluno à turma informada', () => {
+    const sistema = new SistemaDeNotas(['1A']);
+
+    const aluno = sistema.cadastrarAluno('Maria', [8, 9], '1A');
+    const turma = sistema.getTurma('1A');
+
+    expect(aluno.nome).toBe('Maria');
+    expect(aluno.notas).toEqual([8, 9]);
+    expect(turma.alunos).toContain(aluno);
+  });
 });
