@@ -200,4 +200,19 @@ describe('SistemaDeNotas', () => {
 
     expect(sistema.listarTodosOsAlunos()).toEqual([]);
   });
+
+    test('listarTodosOsAlunos retorna todos os alunos de todas as turmas com referência à turma', () => {
+    const sistema = new SistemaDeNotas(['1A', '2B']);
+
+    const aluno1 = sistema.cadastrarAluno('Ana', [8, 9], '1A');
+    const aluno2 = sistema.cadastrarAluno('Bruno', [7, 10], '1A');
+    const aluno3 = sistema.cadastrarAluno('Carlos', [6, 6], '2B');
+
+    const todos = sistema.listarTodosOsAlunos();
+
+    expect(todos).toHaveLength(3);
+    expect(todos).toContainEqual({ aluno: aluno1, turma: '1A' });
+    expect(todos).toContainEqual({ aluno: aluno2, turma: '1A' });
+    expect(todos).toContainEqual({ aluno: aluno3, turma: '2B' });
+  });
 });
