@@ -71,10 +71,6 @@ export default class SistemaDeNotas {
 
 
     static soma(a, b) {
-        if (a === 1 && b === 1) {
-            return 2;
-        } else {
-            return 5;
-        }
+        return a + b;
     }
 }
