@@ -116,4 +116,16 @@ describe('SistemaDeNotas', () => {
     expect(turma.alunos).toHaveLength(1);
     expect(turma.alunos[0]).toBe(aluno);
   });
+
+    test('cadastrarAluno permite múltiplos alunos na mesma turma', () => {
+    const sistema = new SistemaDeNotas(['1A']);
+
+    const aluno1 = sistema.cadastrarAluno('Ana', [8, 9], '1A');
+    const aluno2 = sistema.cadastrarAluno('Bruno', [7, 10], '1A');
+    const turma = sistema.getTurma('1A');
+
+    expect(turma.alunos).toHaveLength(2);
+    expect(turma.alunos).toContain(aluno1);
+    expect(turma.alunos).toContain(aluno2);
+  });
 });
