@@ -144,4 +144,20 @@ describe('SistemaDeNotas', () => {
       sistema.cadastrarAluno('Pedro', [8, Number('abc')], '1A');
     }).toThrow('Notas devem ser números');
   });
+
+    test('cadastrarAluno permite mesmo nome em turmas diferentes', () => {
+    const sistema = new SistemaDeNotas(['1A', '2B']);
+
+    const aluno1 = sistema.cadastrarAluno('Ana', [8, 9], '1A');
+    const aluno2 = sistema.cadastrarAluno('Ana', [7, 10], '2B');
+
+    expect(aluno1.nome).toBe('Ana');
+    expect(aluno2.nome).toBe('Ana');
+
+    const turma1A = sistema.getTurma('1A');
+    const turma2B = sistema.getTurma('2B');
+
+    expect(turma1A.alunos).toHaveLength(1);
+    expect(turma2B.alunos).toHaveLength(1);
+  });
 });
