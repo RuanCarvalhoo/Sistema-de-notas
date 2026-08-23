@@ -195,4 +195,9 @@ describe('SistemaDeNotas', () => {
     expect(analise.aprovados).toBe(1);
     expect(analise.reprovados).toBe(1);
   });
+    test('listarTodosOsAlunos retorna array vazio quando não há alunos', () => {
+    const sistema = new SistemaDeNotas(['1A', '2B']);
+
+    expect(sistema.listarTodosOsAlunos()).toEqual([]);
+  });
 });
