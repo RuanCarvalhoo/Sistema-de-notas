@@ -52,4 +52,13 @@ describe('SistemaDeNotas', () => {
       sistema.cadastrarAluno('Maria', [8, 9], '2B');
     }).toThrow('Turma inexistente: 2B');
   });
+
+
+  test('cadastrarAluno lança erro quando o aluno não tem notas', () => {
+    const sistema = new SistemaDeNotas(['1A']);
+
+    expect(() => {
+      sistema.cadastrarAluno('João', [], '1A');
+    }).toThrow('Aluno deve ter pelo menos uma nota');
+  });
 });
