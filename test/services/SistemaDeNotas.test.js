@@ -1,4 +1,4 @@
-const SistemaDeNotas = require('../../src/services/SistemaDeNotas');
+import SistemaDeNotas from '../../src/services/SistemaDeNotas.js';
 
 describe('SistemaDeNotas', () => {
   test('deve retornar 2 quando somar 1 + 1', () => {
