@@ -215,4 +215,14 @@ describe('SistemaDeNotas', () => {
     expect(todos).toContainEqual({ aluno: aluno2, turma: '1A' });
     expect(todos).toContainEqual({ aluno: aluno3, turma: '2B' });
   });
+
+    test('constructor cria sistema vazio quando nenhum nome é passado', () => {
+    const sistema = new SistemaDeNotas();
+
+    expect(sistema.getNomesTurmas()).toEqual([]);
+    expect(sistema.listarTodosOsAlunos()).toEqual([]);
+    expect(sistema.analisarTodasAsTurmas()).toEqual([]);
+  });
+
+  
 });
