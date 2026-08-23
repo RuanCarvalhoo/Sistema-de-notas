@@ -136,4 +136,12 @@ describe('SistemaDeNotas', () => {
       sistema.cadastrarAluno('Pedro', [8, 'dez'], '1A');
     }).toThrow('Notas devem ser números');
   });
+
+    test('cadastrarAluno lança erro quando há nota NaN', () => {
+    const sistema = new SistemaDeNotas(['1A']);
+
+    expect(() => {
+      sistema.cadastrarAluno('Pedro', [8, Number('abc')], '1A');
+    }).toThrow('Notas devem ser números');
+  });
 });
