@@ -29,6 +29,10 @@ export default class SistemaDeNotas {
       throw new Error(`Turma inexistente: ${nomeTurma}`);
     }
 
+    if (!nome || nome.trim() === "") {
+      throw new Error("Aluno deve ter nome");
+    }
+
     if (!notas || notas.length === 0) {
       throw new Error("Aluno deve ter pelo menos uma nota");
     }

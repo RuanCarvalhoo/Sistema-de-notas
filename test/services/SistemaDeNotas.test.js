@@ -61,4 +61,13 @@ describe('SistemaDeNotas', () => {
       sistema.cadastrarAluno('João', [], '1A');
     }).toThrow('Aluno deve ter pelo menos uma nota');
   });
+
+
+  test('cadastrarAluno lança erro quando o aluno não tem nome', () => {
+    const sistema = new SistemaDeNotas(['1A']);
+
+    expect(() => {
+      sistema.cadastrarAluno('', [8, 9], '1A');
+    }).toThrow('Aluno deve ter nome');
+  });
 });
