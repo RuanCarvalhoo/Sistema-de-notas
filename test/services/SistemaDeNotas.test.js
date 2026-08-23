@@ -89,4 +89,12 @@ describe('SistemaDeNotas', () => {
       sistema.cadastrarAluno('Ana', [9, 10], '1A');
     }).toThrow('Aluno já cadastrado na turma: Ana');
   });
+
+    test('cadastrarAluno lança erro quando há nota negativa', () => {
+    const sistema = new SistemaDeNotas(['1A']);
+
+    expect(() => {
+      sistema.cadastrarAluno('Carlos', [-1, 8], '1A');
+    }).toThrow('Notas devem estar entre 0 e 10');
+  });
 });
