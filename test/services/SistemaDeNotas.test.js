@@ -166,4 +166,17 @@ describe('SistemaDeNotas', () => {
 
     expect(sistema.analisarTodasAsTurmas()).toEqual([]);
   });
+
+    test('analisarTodasAsTurmas retorna análise apenas das turmas com alunos', () => {
+    const sistema = new SistemaDeNotas(['1A', '2B', '3C']);
+
+    sistema.cadastrarAluno('Ana', [8, 9], '1A');
+    sistema.cadastrarAluno('Bruno', [4, 5], '1A');
+    sistema.cadastrarAluno('Carlos', [10, 10], '3C');
+
+    const analises = sistema.analisarTodasAsTurmas();
+
+    expect(analises).toHaveLength(2);
+    expect(analises.map(a => a.nome)).toEqual(expect.arrayContaining(['1A', '3C']));
+  });
 });
