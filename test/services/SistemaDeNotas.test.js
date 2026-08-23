@@ -43,4 +43,13 @@ describe('SistemaDeNotas', () => {
     expect(aluno.notas).toEqual([8, 9]);
     expect(turma.alunos).toContain(aluno);
   });
+
+
+  test('cadastrarAluno lança erro quando a turma não existe', () => {
+    const sistema = new SistemaDeNotas(['1A']);
+
+    expect(() => {
+      sistema.cadastrarAluno('Maria', [8, 9], '2B');
+    }).toThrow('Turma inexistente: 2B');
+  });
 });
