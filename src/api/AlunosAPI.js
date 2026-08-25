@@ -7,4 +7,18 @@ const alunos = [
     { id: 3, nome: "Diana Prince", turma: "Mouratech Automação" }
 ];
 
-export default alunos;
+// Simula uma requisição a uma API externa.
+// Resolve a Promise se o aluno existir, ou rejeita caso contrário.
+export function buscarAluno(id) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const aluno = alunos.find(aluno => aluno.id === id);
+
+            if (aluno) {
+                resolve(aluno);
+            } else {
+                reject(new Error(`Aluno com id ${id} não encontrado.`));
+            }
+        }, 1000);
+    });
+}
