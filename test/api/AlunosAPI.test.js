@@ -7,4 +7,9 @@ describe('AlunosAPI', () => {
 
     expect(aluno).toEqual({ id: 1, nome: 'Peter Parker', turma: 'Mouratech Dados' });
   });
+
+
+  test('buscarAluno rejeita com erro quando o id não existe', async () => {
+    await expect(buscarAluno(99)).rejects.toThrow('Aluno com id 99 não encontrado.');
+  });
 });
